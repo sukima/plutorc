@@ -1,2 +1,2 @@
 #!/bin/bash
-exec ssh suki@zeus.local "/home/suki/.bin/clipboard -o $1"
+exec xclip -o -selection "${1:-clipboard}"
