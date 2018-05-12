@@ -3,7 +3,7 @@
 HOST="zeus"
 STANDUP_FILE="standup.txt"
 BACKUP_FILE="standup-prev.txt"
-VIM_COMMANDS="+'setf slack' +'set spell' +'set wrap'"
+VIM_COMMANDS="'+setf slack' '+set spell' '+set wrap'"
 
 case "$1" in
   -l|--local)
@@ -24,7 +24,7 @@ if [[ $standup_line_count -gt 0 ]]; then
 else
   exec vim \
     "scp://$HOST/$STANDUP_FILE" \
-    +"r scp://$HOST/$BACKUP_FILE" \
-    +0d \
+    "+r scp://$HOST/$BACKUP_FILE" \
+    "+0d" \
     "$VIM_COMMANDS"
 fi
