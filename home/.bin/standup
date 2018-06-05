@@ -19,8 +19,9 @@ if [[ $standup_line_count -gt 0 ]]; then
   exec vim -o \
     "scp://$HOST/$STANDUP_FILE" \
     "scp://$HOST/$BACKUP_FILE" \
-    "+bufdo set filetype=slack wrap spell" \
-    "+b1"
+    "+bufdo setlocal filetype=slack wrap spell" \
+    "+b1" \
+    "+syn on"
 else
   exec vim \
     "scp://$HOST/$STANDUP_FILE" \
