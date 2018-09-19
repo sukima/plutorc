@@ -12,3 +12,6 @@ alias reset_search="docker exec -it redis redis-cli FLUSHALL && dcr rake search:
 
 alias lhreboot="dcr rake db:drop db:create db:migrate && dcr rake 'application_seeds:load[development]'"
 alias partnerreboot="dcr rake db:drop db:create db:migrate && dcr rake 'application_seeds:load[development]' && dcr rake search:delete_all_indices && dcr rake search:setup && docker exec -it redis redis-cli FLUSHALL"
+
+alias zclip="CLIPBOARD=zeuscopy clip"
+alias zrclip="PASTEPBOARD=zeuspaste rclip"
