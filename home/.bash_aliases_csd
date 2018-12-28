@@ -6,9 +6,12 @@ alias nombom="npm cache clear && bower cache clean && rm -rf node_modules bower_
 alias nomyarn="bower cache clean && rm -rf node_modules bower_components dist tmp && yarn install && bower install"
 
 alias lh_dev_seed="dcr rake 'application_seeds:load[development]'"
+alias partner_dev_seed="dcr rake 'application_seeds:load[development]'"
 alias interpreter_dev_seed="docker-compose run -w /code/apps/interpreter_server_web web mix ecto.reset && docker-compose run -w /code/apps/interpreter_server_web web mix run /code/apps/interpreter/priv/repo/dev_seeds.exs"
+
 alias delete_search="docker exec -it redis redis-cli FLUSHALL && dcr rake search:delete_all_indices"
 alias reset_search="docker exec -it redis redis-cli FLUSHALL && dcr rake search:delete_all_indices && dcr rake search:setup"
+alias rebuild_indexes="docker-compose run --rm -w /code web mix search.indices delete_version && docker-compose run --rm -w /code web mix search.setup"
 
 alias lhreboot="dcr rake db:drop db:create db:migrate && dcr rake 'application_seeds:load[development]'"
 alias partnerreboot="dcr rake db:drop db:create db:migrate && dcr rake 'application_seeds:load[development]' && dcr rake search:delete_all_indices && dcr rake search:setup && docker exec -it redis redis-cli FLUSHALL"
